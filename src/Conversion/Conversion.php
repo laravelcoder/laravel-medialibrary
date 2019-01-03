@@ -13,6 +13,9 @@ class Conversion
 
     /** @var int */
     protected $extractVideoFrameAtSecond = 0;
+    
+    /** @var int */
+    protected $ExtractMultipleFrames = 1;
 
     /** @var \Spatie\Image\Manipulations */
     protected $manipulations;
@@ -62,6 +65,22 @@ class Conversion
     public function getExtractVideoFrameAtSecond(): int
     {
         return $this->extractVideoFrameAtSecond;
+    }
+    
+    /*
+     * Set the framerate in seconds to extract a video thumbnails.
+     * Only used on video media.
+     */
+    public function extractMultipleFrames(int $framerate): self
+    {
+        $this->extractMultipleFramesFilter = $framerate;
+
+        return $this;
+    }
+
+    public function getExtractMultipleFrames(): int
+    {
+        return $this->extractMultipleFramesFilter;
     }
 
     public function keepOriginalImageFormat(): self
